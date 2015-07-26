@@ -4,4 +4,7 @@
     <dimen name="header_left_padding">16dp</dimen>
     <dimen name="header_height">192dp</dimen>
     <dimen name="profile_image_size">64dp</dimen>
+    <dimen name="titulo1">20dp</dimen>
+    <dimen name="titulo2">15dp</dimen>
+    <dimen name="titulo3">10dp</dimen>
 </resources>

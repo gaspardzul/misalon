@@ -13,4 +13,10 @@
     <string name="products">Productos</string>
     <string name="citas">Citas</string>
     <string name="servicios">servicios</string>
+    <string name="title_activity_producto_agregar_editar">ProductoAgregarEditar</string>
+
+    <!--acciones-->
+    <string name="guardar">Guardar</string>
+    <string name="editar">Editar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
