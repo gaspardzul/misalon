@@ -13,10 +13,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.claudia.misalon.Application.MyApp;
 import com.claudia.misalon.R;
 import com.claudia.misalon.fragments.CitasFragment;
+import com.claudia.misalon.fragments.ClienteFragment;
 import com.claudia.misalon.fragments.DashboardFragment;
 import com.claudia.misalon.fragments.ProductoServiciosFragment;
+import com.parse.Parse;
+import com.parse.ParseObject;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -26,13 +30,18 @@ public class MainActivity extends ActionBarActivity {
     String strDashboard;
     String strProductos;
     String strCitas;
+    String strCliente;
+    private final String APPID = "fdekst9m5LsXcvXsLa6p0F21aZZ9GkrAQASRbl6q";
+    private final String CLIENTKEY = "D45k6GI9M9yLmlC0fwZutlUwWjHsAuEY9IeVJwbG";
     private FragmentTransaction fragmentTransaction;
 
     private Fragment[] fragmentos = new Fragment[]{
             new DashboardFragment(),
             new ProductoServiciosFragment(),
-            new CitasFragment()
+            new CitasFragment(),
+            new ClienteFragment()
     };
+
 
 
     @Override
@@ -40,6 +49,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setToolbar();
+
 
         FragmentManager manager = getFragmentManager();
         fragmentTransaction = manager.beginTransaction();
@@ -64,6 +74,8 @@ public class MainActivity extends ActionBarActivity {
         strCitas = getResources().getString(R.string.citas);
         strDashboard = getResources().getString(R.string.dashboard);
         strProductos = getResources().getString(R.string.products);
+        strCliente = getResources().getString(R.string.clientes);
+
 
 
     }
@@ -117,22 +129,26 @@ public class MainActivity extends ActionBarActivity {
             positionFragment=1;
         }else if(title.equals((strCitas))){
             positionFragment=2;
-        }else{
-            positionFragment=0;
+        }else if(title.equals(strCliente)){
+            positionFragment=3;
         }
 
-        fragmentTransaction = fragmentManager.beginTransaction();
+        if(!drawerTitle.equals(title)){
+            fragmentTransaction = fragmentManager.beginTransaction();
 
-        for (Fragment fragment : fragmentos) {
-            fragmentTransaction.hide(fragment);
+            for (Fragment fragment : fragmentos) {
+                fragmentTransaction.hide(fragment);
+            }
+
+            fragmentTransaction.show(fragmentos[positionFragment]).commit();
+
+            drawerLayout.closeDrawers();
+
+            drawerTitle = title;
+            setTitle(title); // Setear título actual
         }
 
-        fragmentTransaction.show(fragmentos[positionFragment]).commit();
 
-        drawerLayout.closeDrawers();
-
-        drawerTitle = title;
-        setTitle(title); // Setear título actual
     }
 
     @Override

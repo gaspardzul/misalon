@@ -67,9 +67,9 @@ public class ProductoServiciosFragment extends Fragment {
 
     private void init(View v, SwipeRefreshLayout s) {
 
-        List<Producto> productos = Producto.listAll(Producto.class);
+        //List<Producto> productos = Producto.listAll(Producto.class);
         recyclerView = (RecyclerView) v.findViewById(R.id.recyclerProducts);
-        adapter = new ProductAdapter(getActivity(),productos);
+        //adapter = new ProductAdapter(getActivity(),productos);
         recyclerView.setLayoutManager(new LinearLayoutManager((getActivity())));
         recyclerView.setAdapter(adapter);
         s.setRefreshing(false);

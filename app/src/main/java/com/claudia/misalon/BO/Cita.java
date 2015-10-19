@@ -1,6 +1,6 @@
 package com.claudia.misalon.BO;
 
-import com.orm.SugarRecord;
+
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.Date;
 /**
  * Created by gaspar on 26/07/15.
  */
-public class Cita extends SugarRecord<Cita>{
+public class Cita{
 
     String nombre;
     Date fecha; //fecha y hora
