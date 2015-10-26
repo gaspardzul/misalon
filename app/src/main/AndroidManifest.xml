@@ -29,6 +29,10 @@
             android:name=".views.ClienteAgregarEditar"
             android:label="@string/title_activity_cliente_agregar_editar" >
         </activity>
+        <activity
+            android:name=".views.ServicioNuevoActivity"
+            android:label="@string/title_activity_servicio_nuevo" >
+        </activity>
     </application>
 
 </manifest>

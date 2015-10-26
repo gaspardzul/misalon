@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.claudia.misalon.BO.Producto;
 import com.claudia.misalon.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,9 +21,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.Producto
     public List<Producto> productos;
     static Context context;
 
-    public ProductAdapter(Context ctx, List<Producto> productos){
+    public ProductAdapter(Context ctx){
         this.context = ctx;
-        this.productos=productos;
+        this.productos=new ArrayList<>();
+    }
+
+
+    public void replace(ArrayList<Producto> products){
+        this.productos = products;
+        notifyDataSetChanged();
     }
 
     @Override

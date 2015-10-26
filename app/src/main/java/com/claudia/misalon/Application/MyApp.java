@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.claudia.misalon.BO.Cliente;
 import com.claudia.misalon.BO.Producto;
+import com.claudia.misalon.BO.Servicio;
 import com.claudia.misalon.views.MainActivity;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -23,6 +24,7 @@ public class MyApp extends Application {
         Parse.initialize(this, APPID, CLIENTKEY);
 
         ParseObject.registerSubclass(Producto.class);
+        ParseObject.registerSubclass(Servicio.class);
         ParseObject.registerSubclass(Cliente.class);
 
     }

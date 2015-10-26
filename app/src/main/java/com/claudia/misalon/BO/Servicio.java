@@ -1,5 +1,8 @@
 package com.claudia.misalon.BO;
 
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,21 +10,53 @@ import java.util.Date;
  * Created by gaspar on 26/07/15.
  * son los servicios que se hacen los clientes
  */
+@ParseClassName("Servicio")
+public class Servicio extends ParseObject{
 
-public class Servicio {
+    private String cliente;
+    private String clienteID;
+    private ArrayList<String> servicios; //ids de servicios
+    private Date fecha;
+    private double costo;
 
-    Cliente cliente;
-    ArrayList<Producto> servicios;
-    Date fecha;
-    double costo;
 
-    public Servicio(){}
-
-    public Servicio(Cliente cliente, ArrayList<Producto> servicios, Date fecha, double costo){
-        this.cliente=cliente;
-        this.servicios=servicios;
-        this.fecha=fecha;
-        this.costo=costo;
+    public String getCliente() {
+        return getString("cliente");
     }
 
+    public void setCliente(String cliente) {
+        put("cliente",cliente);
+    }
+
+    public ArrayList<String> getServicios() {
+        return (ArrayList<String>) get("servicios");
+    }
+
+    public void setServicios(ArrayList<String> servicios) {
+        put("servicios",servicios);
+    }
+
+    public Date getFecha() {
+        return getDate("fecha");
+    }
+
+    public void setFecha(Date fecha) {
+        put("fecha",fecha);
+    }
+
+    public double getCosto() {
+        return getDouble("costo");
+    }
+
+    public void setCosto(double costo) {
+        put("costo",costo);
+    }
+
+    public String getClienteID() {
+        return getString("clienteid");
+    }
+
+    public void setClienteID(String clienteID) {
+       put("clienteid",clienteID);
+    }
 }

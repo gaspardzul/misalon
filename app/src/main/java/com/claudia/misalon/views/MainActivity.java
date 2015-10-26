@@ -19,6 +19,7 @@ import com.claudia.misalon.fragments.CitasFragment;
 import com.claudia.misalon.fragments.ClienteFragment;
 import com.claudia.misalon.fragments.DashboardFragment;
 import com.claudia.misalon.fragments.ProductoServiciosFragment;
+import com.claudia.misalon.fragments.ServicioFragment;
 import com.parse.Parse;
 import com.parse.ParseObject;
 
@@ -31,15 +32,16 @@ public class MainActivity extends ActionBarActivity {
     String strProductos;
     String strCitas;
     String strCliente;
-    private final String APPID = "fdekst9m5LsXcvXsLa6p0F21aZZ9GkrAQASRbl6q";
-    private final String CLIENTKEY = "D45k6GI9M9yLmlC0fwZutlUwWjHsAuEY9IeVJwbG";
+    String strServicios;
+
     private FragmentTransaction fragmentTransaction;
 
     private Fragment[] fragmentos = new Fragment[]{
             new DashboardFragment(),
             new ProductoServiciosFragment(),
             new CitasFragment(),
-            new ClienteFragment()
+            new ClienteFragment(),
+            new ServicioFragment()
     };
 
 
@@ -75,8 +77,7 @@ public class MainActivity extends ActionBarActivity {
         strDashboard = getResources().getString(R.string.dashboard);
         strProductos = getResources().getString(R.string.products);
         strCliente = getResources().getString(R.string.clientes);
-
-
+        strServicios = getResources().getString(R.string.servicios);
 
     }
 
@@ -131,6 +132,8 @@ public class MainActivity extends ActionBarActivity {
             positionFragment=2;
         }else if(title.equals(strCliente)){
             positionFragment=3;
+        }else if(title.equals(strServicios)){
+            positionFragment=4;
         }
 
         if(!drawerTitle.equals(title)){
@@ -147,8 +150,6 @@ public class MainActivity extends ActionBarActivity {
             drawerTitle = title;
             setTitle(title); // Setear título actual
         }
-
-
     }
 
     @Override

@@ -1,0 +1,87 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.claudia.misalon.views.ServicioNuevoActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtClienteServicio"
+            android:hint="Cliente"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="56dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/txtServicio"
+            android:hint="Servicio / Producto"
+            android:layout_below="@+id/txtClienteServicio"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="69dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Guardar Servicio"
+            android:id="@+id/btnGuardarServicio"
+            android:onClick="saveServicio"
+            android:layout_marginBottom="51dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:onClick="addProduct"
+            android:id="@+id/btnAddService"
+            android:layout_below="@+id/txtServicio"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Total: $0"
+            android:textSize="30dp"
+            android:paddingRight="10dp"
+            android:id="@+id/txtTotal"
+            android:gravity="right"
+            android:layout_above="@+id/btnGuardarServicio"
+            android:layout_alignStart="@+id/btnAddService" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:onClick="rmProduct"
+            android:id="@+id/btnRmService"
+            android:layout_alignTop="@+id/btnAddService"
+            android:layout_toEndOf="@+id/btnAddService" />
+
+
+    </RelativeLayout>
+
+
+
+
+
+</LinearLayout>

@@ -12,6 +12,7 @@ public class Producto extends ParseObject{
     private String nombre;
     private double precio;
     private int tipo; // es producto o servicio
+    private String idProd;
 
     public String getNombre() {
         return getString("nombre");
@@ -39,5 +40,13 @@ public class Producto extends ParseObject{
 
     public String getId(){
         return getObjectId();
+    }
+
+    public String getIdProd() {
+        return idProd;
+    }
+
+    public void setIdProd(String idProd) {
+        this.idProd = idProd;
     }
 }
