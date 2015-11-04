@@ -12,6 +12,7 @@ public class Cliente extends ParseObject {
     private String telefono;
     private String fechaNacimiento;
     private int visitas;
+    private String clienteID;
 
 
     public String getNombre() {
@@ -44,5 +45,13 @@ public class Cliente extends ParseObject {
 
     public void setVisitas(int visitas) {
         put("visitas",visitas);
+    }
+
+    public String getClienteID() {
+        return clienteID;
+    }
+
+    public void setClienteID(String clienteID) {
+        this.clienteID = clienteID;
     }
 }
