@@ -20,23 +20,6 @@
         android:padding="@dimen/activity_horizontal_margin"
         android:layout_height="match_parent">
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtClienteServicio"
-            android:hint="Cliente"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="56dp" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/txtServicio"
-            android:hint="Servicio / Producto"
-            android:layout_below="@+id/txtClienteServicio"
-            android:layout_alignParentStart="true"
-            android:layout_marginTop="69dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -44,7 +27,6 @@
             android:text="Guardar Servicio"
             android:id="@+id/btnGuardarServicio"
             android:onClick="saveServicio"
-            android:layout_marginBottom="51dp"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true" />
 
@@ -54,19 +36,20 @@
             android:text="+"
             android:onClick="addProduct"
             android:id="@+id/btnAddService"
-            android:layout_below="@+id/txtServicio"
+            android:layout_below="@+id/spinnerService"
             android:layout_alignParentStart="true" />
 
         <TextView
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Total: $0"
             android:textSize="30dp"
             android:paddingRight="10dp"
             android:id="@+id/txtTotal"
             android:gravity="right"
-            android:layout_above="@+id/btnGuardarServicio"
-            android:layout_alignStart="@+id/btnAddService" />
+            android:layout_below="@+id/btnRmService"
+            android:layout_alignEnd="@+id/spinnerService"
+            android:layout_marginTop="39dp" />
 
         <Button
             android:layout_width="wrap_content"
@@ -74,8 +57,49 @@
             android:text="-"
             android:onClick="rmProduct"
             android:id="@+id/btnRmService"
-            android:layout_alignTop="@+id/btnAddService"
+            android:layout_below="@+id/spinnerService"
             android:layout_toEndOf="@+id/btnAddService" />
+
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerService"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@+id/spinnerCliente"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="67dp" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerCliente"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="38dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Seleccione cliente"
+            android:id="@+id/textView3"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Seleccione productos/servicios"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/spinnerCliente"
+            android:layout_alignParentStart="true" />
 
 
     </RelativeLayout>

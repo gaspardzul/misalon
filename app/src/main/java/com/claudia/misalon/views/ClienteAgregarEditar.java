@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class ClienteAgregarEditar extends AppCompatActivity {
     EditText txtFecNac;
     boolean editar;
     String clienteIdEditar;
+    Button btnEliminar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +34,21 @@ public class ClienteAgregarEditar extends AppCompatActivity {
         txtNombre = (EditText) findViewById(R.id.txtNombre);
         txtTelefono = (EditText) findViewById(R.id.txtTelefono);
         txtFecNac = (EditText) findViewById(R.id.txtFechaNacimiento);
+        btnEliminar = (Button) findViewById(R.id.btnEliminarCliente);
         editar=false;
         Intent intent = getIntent();
         if(intent.hasExtra("editar")){
             Bundle bd = getIntent().getExtras();
+            editar = true;
             txtNombre.setText(bd.getString("nombre"));
             txtTelefono.setText(bd.getString("telefono"));
+            btnEliminar.setVisibility(View.VISIBLE);
+
             txtFecNac.setText(bd.getString("fechaNacimiento"));
             clienteIdEditar = bd.getString("clienteid");
             Log.d("id:",clienteIdEditar);
+        }else{
+            btnEliminar.setVisibility(View.GONE);
         }
     }
 
@@ -51,12 +59,34 @@ public class ClienteAgregarEditar extends AppCompatActivity {
         return true;
     }
 
+    public void eliminarCliente(View v){
+        Log.d("id",clienteIdEditar);
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cliente");
+        // Retrieve the object by id
+        query.getInBackground(clienteIdEditar, new GetCallback<ParseObject>() {
+            public void done(ParseObject obj, ParseException e) {
+                if (e == null) {
+                    // Now let's update it with some new data. In this case, only cheatMode and score
+                    // will get sent to the Parse Cloud. playerName hasn't changed.
+
+                    obj.deleteInBackground();
+                    Log.d("note", "Eliminando...");
+                    Toast.makeText(getApplication(),"Eliminado correctamente",Toast.LENGTH_SHORT).show();
+                    onBackPressed();
+                }else {
+                    Log.d("msj",e.getMessage());
+                }
+            }
+        });
+    }
+
+
     public void guardarCliente(View v){
         if(editar){
             editarCliente(clienteIdEditar);
         }else{
             Cliente c = new Cliente();
-            c.setNombre(txtNombre.getText().toString());
+            c.setNombre(txtNombre.getText().toString().toUpperCase());
             c.setTelefono(txtTelefono.getText().toString());
             c.setFechaNacimiento(txtFecNac.getText().toString());
             c.saveInBackground();
@@ -70,12 +100,12 @@ public class ClienteAgregarEditar extends AppCompatActivity {
 
     public void editarCliente(String clienteid){
         Log.d("id",clienteid);
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Producto");
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cliente");
 
         // Retrieve the object by id
         query.getInBackground(clienteid, new GetCallback<ParseObject>() {
             public void done(ParseObject obj, ParseException e) {
-                String nombre=txtNombre.getText().toString().trim();
+                String nombre=txtNombre.getText().toString().trim().toUpperCase();
                 String telef = txtTelefono.getText().toString().trim();
                 String fechaNac = txtFecNac.getText().toString().trim();
                 if (e == null) {
