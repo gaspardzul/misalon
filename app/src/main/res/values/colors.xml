@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="window_background">#F5F5F5</color>
-    <color name="ToolbarprimaryColor">#D81B60</color>
-    <color name="primaryDarkColor">#1390F6</color>
-    <color name="navDrawerAccentColor">#AD1457</color>
-    <color name="black_transparency">#3c040408</color>
+    <color name="primary">#607D8B</color>
+    <color name="primary_dark">#455A64</color>
+    <color name="primary_light">#CFD8DC</color>
+    <color name="accent">#FFC107</color>
+    <color name="primary_text">#212121</color>
+    <color name="secondary_text">#727272</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#B6B6B6</color>
 </resources>

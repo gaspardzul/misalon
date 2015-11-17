@@ -22,19 +22,20 @@
         android:hint="Teléfono"
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/txtFechaNacimiento"
-        android:layout_alignEnd="@+id/btnGuardarCliente" />
+        android:layout_alignEnd="@+id/btnGuardarCliente"
+        android:inputType="phone" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="date"
         android:ems="10"
         android:id="@+id/txtFechaNacimiento"
         android:hint="Fecha Nacimiento"
         android:layout_below="@+id/txtNombre"
         android:layout_alignStart="@+id/txtNombre"
         android:layout_marginTop="66dp"
-        android:layout_alignEnd="@+id/btnGuardarCliente" />
+        android:layout_alignEnd="@+id/btnGuardarCliente"
+        android:inputType="date" />
 
     <Button
         android:layout_width="wrap_content"

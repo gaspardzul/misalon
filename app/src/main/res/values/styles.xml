@@ -1,11 +1,12 @@
 <resources>
 
         <!-- Customize your theme here. -->
-        <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-            <item name="colorPrimary">@color/ToolbarprimaryColor</item>
-            <item name="colorPrimaryDark">@color/primaryDarkColor</item>
-            <item name="colorAccent">@color/navDrawerAccentColor</item>
-            <item name="android:windowBackground">@color/window_background</item>
-        </style>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="actionBarItemBackground">@android:color/transparent</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:textColorPrimary">@color/primary_text</item>
+        <item name="android:textColorSecondary">@color/secondary_text</item>
+    </style>
 
 </resources>

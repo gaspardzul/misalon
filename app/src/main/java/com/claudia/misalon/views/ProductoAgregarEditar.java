@@ -1,5 +1,7 @@
 package com.claudia.misalon.views;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -9,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
@@ -27,6 +30,7 @@ public class ProductoAgregarEditar extends ActionBarActivity {
     String productIdEditar;
     RadioButton radioServicio;
     RadioButton radioProducto;
+    Button btnEliminar;
 
     boolean editar;
 
@@ -36,13 +40,16 @@ public class ProductoAgregarEditar extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto_agregar_editar);
         setToolbar();
+        btnEliminar =(Button) findViewById(R.id.btnEliminarProducto);
         txtNombre = (EditText) findViewById(R.id.txtNombreProducto);
         txtPrecio = (EditText) findViewById(R.id.txtPrecioProducto);
         radioServicio = (RadioButton)findViewById(R.id.radio_servicio);
         radioProducto = (RadioButton)findViewById(R.id.radio_producto);
+        btnEliminar.setVisibility(View.GONE);
         editar=false;
         Intent intent = getIntent();
         if(intent.hasExtra("editar")){
+            btnEliminar.setVisibility(View.VISIBLE);
             Bundle bd = getIntent().getExtras();
             productIdEditar = bd.getString("productoId");
             txtNombre.setText(bd.getString("productoNombre"));
@@ -61,8 +68,53 @@ public class ProductoAgregarEditar extends ActionBarActivity {
 
     }
 
-    public void cancelar(View v){
-        onBackPressed();
+    /**
+     * Crea un diálogo de alerta sencillo
+     * @return Nuevo diálogo
+     */
+    public AlertDialog alertEliminarProducto() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Alerta")
+                .setMessage("¿Realmente desea eliminar el registro?")
+                .setPositiveButton("ELIMINAR",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Log.d("id",clienteIdEditar);
+                                ParseQuery<ParseObject> query = ParseQuery.getQuery("Producto");
+                                // Retrieve the object by id
+                                query.getInBackground(productIdEditar, new GetCallback<ParseObject>() {
+                                    public void done(ParseObject obj, ParseException e) {
+                                        if (e == null) {
+                                            // Now let's update it with some new data. In this case, only cheatMode and score
+                                            // will get sent to the Parse Cloud. playerName hasn't changed.
+
+                                            obj.deleteInBackground();
+                                            Log.d("note", "Eliminando...");
+                                            Toast.makeText(getApplication(),"Eliminado correctamente",Toast.LENGTH_SHORT).show();
+                                            onBackPressed();
+                                        }else {
+                                            Log.d("msj",e.getMessage());
+                                        }
+                                    }
+                                });
+                            }
+                        })
+                .setNegativeButton("CANCELAR",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.cancel();
+                            }
+                        });
+
+        return builder.create();
+    }
+
+    public void eliminarProducto(View v){
+        AlertDialog dialog = alertEliminarProducto();
+        dialog.show();
     }
 
     public void editarProdut(String idProd){

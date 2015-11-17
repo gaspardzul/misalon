@@ -32,7 +32,6 @@ public class ClienteFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 
-    Button btnAgregarCliente;
     private RecyclerView recyclerViewCliente;
     private ClienteAdapter adapterCLiente;
     ArrayList<Cliente> clientes = new ArrayList<>();
@@ -54,13 +53,6 @@ public class ClienteFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_cliente, container, false);
-        btnAgregarCliente = (Button) v.findViewById(R.id.btnAgregarCliente);
-        btnAgregarCliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                    nuevoCliente(view);
-            }
-        });
         mLayoutManager = new LinearLayoutManager(getActivity());
         mSwipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_clientes);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -105,14 +97,11 @@ public class ClienteFragment extends Fragment {
         recyclerViewCliente.setAdapter(adapterCLiente);
     }
 
-    public void nuevoCliente(View v){
-        Intent intent = new Intent(getActivity(), ClienteAgregarEditar.class);
-        startActivity(intent);
-    }
 
     //obtenemos los clientes de parse de tipo ParseObj
     public void getClienteParse(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Cliente");
+        query.orderByAscending("nombre");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, com.parse.ParseException e) {

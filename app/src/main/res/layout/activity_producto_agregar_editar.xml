@@ -86,9 +86,9 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/cancelar"
-            android:onClick="cancelar"
-            android:id="@+id/btnCancelar" />
+            android:text="@string/eliminar"
+            android:onClick="eliminarProducto"
+            android:id="@+id/btnEliminarProducto" />
 
         <Button
             android:layout_width="wrap_content"

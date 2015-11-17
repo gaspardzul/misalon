@@ -37,7 +37,7 @@ public class DateUtils {
     }
 
     public String getNow(){
-        SimpleDateFormat sdf = new SimpleDateFormat("d/M/y h:mm a");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/y h:mm a");
         return sdf.format(date.getTime());
     }
 

@@ -54,7 +54,6 @@ public class ProductoServiciosFragment extends Fragment {
         // Inflatex the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_producto_servicios, container, false);
 
-        Button btnAgregar = (Button) v.findViewById(R.id.btnAgregarProducto);
         mSwipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_products);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -63,13 +62,6 @@ public class ProductoServiciosFragment extends Fragment {
             }
         });
         mLayoutManager = new LinearLayoutManager(getActivity());
-
-        btnAgregar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                agregarProduc();
-            }
-        });
         init(v);
         getProductosParse();
         return v;

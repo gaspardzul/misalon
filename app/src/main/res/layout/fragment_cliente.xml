@@ -5,12 +5,6 @@
     tools:context="com.claudia.misalon.fragments.ClienteFragment">
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Agregar Cliente"
-        android:id="@+id/btnAgregarCliente"
-        android:layout_gravity="center" />
 
 
     <android.support.v4.widget.SwipeRefreshLayout

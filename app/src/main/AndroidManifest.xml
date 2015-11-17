@@ -33,6 +33,10 @@
             android:name=".views.ServicioNuevoActivity"
             android:label="@string/title_activity_servicio_nuevo" >
         </activity>
+        <activity
+            android:name=".views.CitaActivity"
+            android:label="@string/title_activity_cita" >
+        </activity>
     </application>
 
 </manifest>

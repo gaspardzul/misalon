@@ -70,6 +70,8 @@ public class ServicioNuevoActivity extends AppCompatActivity  implements Adapter
         spinner.setOnItemSelectedListener(this);
     }
 
+
+
     public void setSpinnerClientes(){
         Spinner spinner = (Spinner) findViewById(R.id.spinnerCliente);
         // Application of the Array to the Spinner

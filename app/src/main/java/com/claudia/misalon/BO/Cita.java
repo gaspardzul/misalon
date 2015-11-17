@@ -2,27 +2,52 @@ package com.claudia.misalon.BO;
 
 
 
+import com.parse.ParseClassName;
+import com.parse.ParseObject;
+
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * Created by gaspar on 26/07/15.
  */
-public class Cita{
+@ParseClassName("Cita")
+public class Cita extends ParseObject{
+    private String nombre; //cliente
+    private Date fecha; //fecha
+    private String descripcion;
+    boolean activo;
+    private String citaID;
 
-    String nombre;
-    Date fecha; //fecha y hora
-    ArrayList<Producto> servicio;
-    double precio;
-    Cliente cliente;
-
-    public Cita(){}
-
-    public Cita(String nombre,Date fecha,ArrayList<Producto> servicios, double precio, Cliente cliente){
-        this.nombre = nombre;
-        this.fecha = fecha;
-        this.servicio = servicios;
-        this.cliente = cliente;
+    public String getNombre() {
+        return getString("nombre");
     }
 
+    public void setNombre(String nombre) {
+        put("nombre",nombre);
+    }
+
+    public Date getFecha() {
+        return getDate("fecha");
+    }
+
+    public void setFecha(Date fecha) {
+        put("fecha",fecha);
+    }
+
+    public String getDescripcion() {
+        return getString("descripcion");
+    }
+
+    public void setDescripcion(String descripcion) {
+        put("descripcion",descripcion);
+    }
+
+    public String getCitaID() {
+        return citaID;
+    }
+
+    public void setCitaID(String citaID) {
+        this.citaID = citaID;
+    }
 }

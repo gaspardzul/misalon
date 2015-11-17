@@ -2,9 +2,11 @@ package com.claudia.misalon.Application;
 
 import android.app.Application;
 
+import com.claudia.misalon.BO.Cita;
 import com.claudia.misalon.BO.Cliente;
 import com.claudia.misalon.BO.Producto;
 import com.claudia.misalon.BO.Servicio;
+import com.claudia.misalon.R;
 import com.claudia.misalon.views.MainActivity;
 import com.parse.Parse;
 import com.parse.ParseObject;
@@ -23,9 +25,11 @@ public class MyApp extends Application {
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, APPID, CLIENTKEY);
 
+        //registramos todos los objetos que utilizamos de Parse
         ParseObject.registerSubclass(Producto.class);
         ParseObject.registerSubclass(Servicio.class);
         ParseObject.registerSubclass(Cliente.class);
+        ParseObject.registerSubclass(Cita.class);
 
     }
 }

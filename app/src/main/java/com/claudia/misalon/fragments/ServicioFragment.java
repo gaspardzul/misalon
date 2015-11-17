@@ -31,7 +31,6 @@ import java.util.List;
  */
 public class ServicioFragment extends Fragment {
 
-    Button btnNuevoServicio;
 
     private RecyclerView recyclerViewService;
     private ServiceAdapter adapterService;
@@ -50,13 +49,6 @@ public class ServicioFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_servicio, container, false);
-        btnNuevoServicio= (Button) v.findViewById(R.id.btnNuevoServicio);
-        btnNuevoServicio.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nuevoServicio(view);
-            }
-        });
         mLayoutManager = new LinearLayoutManager(getActivity());
         mSwipeRefreshLayout = (SwipeRefreshLayout) v.findViewById(R.id.swipe_refresh_services);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -76,7 +68,6 @@ public class ServicioFragment extends Fragment {
         recyclerViewService = (RecyclerView) v.findViewById(R.id.recyclerServices);
         adapterService = new ServiceAdapter(getActivity());
         setupList();
-
     }
 
     private void setupList(){
@@ -101,9 +92,12 @@ public class ServicioFragment extends Fragment {
                     //obtenemos los productos a partir del resultado de la consulta
                     if (objects.size() > 0) {
                         getServices(objects);
+                    }else{
+                        mSwipeRefreshLayout.setRefreshing(false);
                     }
 
                 } else {
+                    mSwipeRefreshLayout.setRefreshing(false);
                     Log.d("score", "Error: " + e.getMessage());
                 }
             }

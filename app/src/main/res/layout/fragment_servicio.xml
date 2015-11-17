@@ -6,12 +6,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nuevo Servicio"
-        android:id="@+id/btnNuevoServicio"
-        android:layout_gravity="center" />
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_services"

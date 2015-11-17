@@ -3,10 +3,12 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="nuevo">Agregar</string>
 
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
+    <!-- PARSE CONFIG -->
+    <string name="APPID_PARSE">fdekst9m5LsXcvXsLa6p0F21aZZ9GkrAQASRbl6q</string>
+    <string name="CLIENTKEY_PARSE">D45k6GI9M9yLmlC0fwZutlUwWjHsAuEY9IeVJwbG</string>
 
     <!--nav menu-->
     <string name="dashboard">Dashboard</string>
@@ -19,7 +21,9 @@
     <!--acciones-->
     <string name="guardar">Guardar</string>
     <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
     <string name="cancelar">Cancelar</string>
     <string name="title_activity_cliente_agregar_editar">ClienteAgregarEditar</string>
     <string name="title_activity_servicio_nuevo">ServicioNuevoActivity</string>
+    <string name="title_activity_cita">CitaActivity</string>
 </resources>
