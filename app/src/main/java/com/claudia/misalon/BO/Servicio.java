@@ -5,6 +5,7 @@ import com.parse.ParseObject;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by gaspar on 26/07/15.
@@ -14,6 +15,7 @@ import java.util.Date;
 public class Servicio extends ParseObject{
 
     private String cliente;
+    private String servicioID;
     private String clienteID;
     private ArrayList<String> servicios; //ids de servicios
     private Date fecha;
@@ -33,7 +35,7 @@ public class Servicio extends ParseObject{
     }
 
     public void setServicios(ArrayList<String> servicios) {
-        put("servicios",servicios);
+        put("servicios", servicios);
     }
 
     public Date getFecha() {
@@ -58,5 +60,13 @@ public class Servicio extends ParseObject{
 
     public void setClienteID(String clienteID) {
        put("clienteid",clienteID);
+    }
+
+    public String getServicioID() {
+        return servicioID;
+    }
+
+    public void setServicioID(String servicioID) {
+        this.servicioID = servicioID;
     }
 }
