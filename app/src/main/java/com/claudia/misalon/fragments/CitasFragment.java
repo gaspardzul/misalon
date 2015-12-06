@@ -103,6 +103,7 @@ public class CitasFragment extends Fragment {
             }
 
         });
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     public void getCitas(List<ParseObject> objects){

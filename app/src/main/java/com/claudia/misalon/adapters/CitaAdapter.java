@@ -31,7 +31,7 @@ public class CitaAdapter extends RecyclerView.Adapter<CitaAdapter.CitaViewHolder
 
     public void replace(ArrayList<Cita> clientes){
         this.citas=clientes;
-//        notifyDataSetChanged();
+        notifyDataSetChanged();
     }
 
     @Override

@@ -23,6 +23,7 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -53,29 +54,16 @@ public class CitaActivity extends AppCompatActivity  implements AdapterView.OnIt
             @Override
             public void onFocusChange(View view, boolean focus) {
                 if(focus){
-                    Calendar mcurrentTime = Calendar.getInstance();
-                    int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                    int minute = mcurrentTime.get(Calendar.MINUTE);
                     TimePickerDialog mTimePicker;
                     mTimePicker = new TimePickerDialog(CitaActivity.this, new TimePickerDialog.OnTimeSetListener() {
                         @Override
                         public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
 
-                            String am_pm = "";
-
-                            Calendar datetime = Calendar.getInstance();
-                            datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
-                            datetime.set(Calendar.MINUTE, selectedMinute);
-
-                            if (datetime.get(Calendar.AM_PM) == Calendar.AM)
-                                am_pm = "AM";
-                            else if (datetime.get(Calendar.AM_PM) == Calendar.PM)
-                                am_pm = "PM";
-
-                            String strHrsToShow = (datetime.get(Calendar.HOUR) == 0) ?"12":Integer.toString( datetime.get(Calendar.HOUR) );
-                            txtHoraCita.setText(strHrsToShow+":"+datetime.get(Calendar.MINUTE)+" "+am_pm);
+                            myCalendar.set(Calendar.HOUR_OF_DAY,selectedHour);
+                            myCalendar.set(Calendar.MINUTE,selectedMinute);
+                            setTimeLabel();
                         }
-                    }, hour, minute, false);//Yes 24 hour time
+                    }, myCalendar.HOUR_OF_DAY, myCalendar.MINUTE, false);//Yes 24 hour time
                     mTimePicker.setTitle("Hora de la cita");
                     mTimePicker.show();
                 }
@@ -86,28 +74,15 @@ public class CitaActivity extends AppCompatActivity  implements AdapterView.OnIt
         txtHoraCita.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar mcurrentTime = Calendar.getInstance();
-                int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                int minute = mcurrentTime.get(Calendar.MINUTE);
                 TimePickerDialog mTimePicker;
                 mTimePicker = new TimePickerDialog(CitaActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                        String am_pm = "";
-
-                        Calendar datetime = Calendar.getInstance();
-                        datetime.set(Calendar.HOUR_OF_DAY, selectedHour);
-                        datetime.set(Calendar.MINUTE, selectedMinute);
-
-                        if (datetime.get(Calendar.AM_PM) == Calendar.AM)
-                            am_pm = "AM";
-                        else if (datetime.get(Calendar.AM_PM) == Calendar.PM)
-                            am_pm = "PM";
-
-                        String strHrsToShow = (datetime.get(Calendar.HOUR) == 0) ? "12" : Integer.toString(datetime.get(Calendar.HOUR));
-                        txtHoraCita.setText(strHrsToShow + ":" + datetime.get(Calendar.MINUTE) + " " + am_pm);
+                        myCalendar.set(Calendar.HOUR_OF_DAY,selectedHour);
+                        myCalendar.set(Calendar.MINUTE,selectedMinute);
+                        setTimeLabel();
                     }
-                }, hour, minute, false);//Yes 24 hour time
+                }, myCalendar.HOUR_OF_DAY, myCalendar.MINUTE, false);//Yes 24 hour time
                 mTimePicker.setTitle("Hora de la cita");
                 mTimePicker.show();
             }
@@ -141,14 +116,18 @@ public class CitaActivity extends AppCompatActivity  implements AdapterView.OnIt
     }
 
 
+    public void setTimeLabel(){
+        Date d = myCalendar.getTime();
+        SimpleDateFormat sdf=new SimpleDateFormat("hh:mm a");
+        String currentDateTimeString = sdf.format(d);
+        txtHoraCita.setText(currentDateTimeString);
+    }
+
     public void guardarCita(View v){
         try{
             Cita cita = new Cita();
             cita.setNombre(nombreCliente);
-            String strFecha = txtFecCita.getText().toString().trim();
-            String strHora = txtHoraCita.getText().toString().trim();
-            Date fechaDate = new Date(strFecha +" "+ strHora);
-            Date fechaNow = new Date();
+            Date fechaDate = myCalendar.getTime();
             cita.setFecha(fechaDate);
             cita.setDescripcion(txtDescripcion.getText().toString().trim());
             cita.saveInBackground();

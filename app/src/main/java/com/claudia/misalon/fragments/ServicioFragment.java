@@ -84,6 +84,7 @@ public class ServicioFragment extends Fragment {
     //obtenemos los servicios de parse de tipo ParseObject
     public void getServicesParse(){
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Servicio");
+        query.orderByAscending("fecha");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, com.parse.ParseException e) {
